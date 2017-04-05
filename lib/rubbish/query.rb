@@ -5,11 +5,9 @@ module Rubbish
     class_methods do
       def where(params = {})
         # FIXME
-        @where_clause = []
+        where_clause = params.keys.map {|key| "#{key} = ?" }
 
-        @where_clause << params.keys.map {|key| "#{key} = ?" }.flatten
-
-        query = "SELECT * FROM #{table_name} WHERE #{@where_clause.join(' AND ')}"
+        query = "SELECT * FROM #{table_name} WHERE #{where_clause.join(' AND ')}"
 
         execute(query, params.values)
       end
