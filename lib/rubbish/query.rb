@@ -7,7 +7,7 @@ module Rubbish
         # FIXME
         @where_clause = []
 
-        @where_clause << params.keys.to_a.map {|key| "#{key} = ?" }.flatten
+        @where_clause << params.keys.map {|key| "#{key} = ?" }.flatten
 
         query = "SELECT * FROM #{table_name} WHERE #{@where_clause.join(' AND ')}"
 
