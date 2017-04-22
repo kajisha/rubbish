@@ -1,11 +1,7 @@
 require 'test/unit'
 require 'rubbish'
 require 'pry'
-
-class User
-  include Rubbish::Query
-  attr_accessor :id, :name
-end
+require_relative './user'
 
 class TestWhere < Test::Unit::TestCase
   def test_where
